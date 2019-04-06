@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center> WelCome In Instifier</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-group>
+      <ion-grid style="border: 2px solid;" *ngFor="let item of course_key;let i = index;">
+        <ion-row style="color:black;font-size:27px;">
+          <ion-col col-10>
+            {{item}}
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon *ngIf="courses[item]['noti'] == false" (click)="changeNotification(item)" name="notifications-off" style="color:red"></ion-icon>
+            <ion-icon *ngIf="courses[item]['noti'] == true" (click)="changeNotification(item)" name="notifications" style="color:green"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-1>
+            By
+          </ion-col>
+          <ion-col col-11>
+           <!-- [ {{data[i].name}} ] -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <!-- {{data[i].date}} -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <!-- {{data[i].msg}} -->
+        </ion-row>
+        <br>
+      </ion-grid>      
+    </ion-item-group>
+  </ion-list>
+</ion-content>

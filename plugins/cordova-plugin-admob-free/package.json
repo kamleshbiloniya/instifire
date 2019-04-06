@@ -1,0 +1,195 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-admob-free",
+      "/home/kamlesh/winter/instifire"
+    ]
+  ],
+  "_from": "cordova-plugin-admob-free@latest",
+  "_hasShrinkwrap": false,
+  "_id": "cordova-plugin-admob-free@0.25.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-admob-free",
+  "_nodeVersion": "11.5.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-admob-free_0.25.0_1545311390725_0.09302684075297729"
+  },
+  "_npmUser": {
+    "email": "npm@ratson.name",
+    "name": "ratson"
+  },
+  "_npmVersion": "6.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-admob-free",
+    "raw": "cordova-plugin-admob-free",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-admob-free/-/cordova-plugin-admob-free-0.25.0.tgz",
+  "_shasum": "595ffa359fa80eaf5298c41ecc16f2cbc3d5fd08",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-admob-free",
+  "_where": "/home/kamlesh/winter/instifire",
+  "author": {
+    "name": "Ratson"
+  },
+  "browserslist": [
+    "> 1%",
+    "Android > 2",
+    "last 2 ChromeAndroid versions",
+    "last 4 versions"
+  ],
+  "bugs": {
+    "url": "https://github.com/ratson/cordova-plugin-admob-free/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-admob-free",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova AdMob Plugin for Google AdMob",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-syntax-class-properties": "^7.2.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-member-expression-literals": "^7.2.0",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/plugin-transform-property-literals": "^7.2.0",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "cordova": "^8.1.2",
+    "cordova-android": "^7.1.4",
+    "cordova-testbed": "^0.4.0",
+    "cross-env": "^5.2.0",
+    "es6-promise": "^4.2.5",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-importpath-plugin": "^1.0.2",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.10.0",
+    "eslint-config-concise": "^0.35.0",
+    "eslint-config-concise-esnext": "^0.35.0",
+    "eslint-config-concise-jest": "^0.35.0",
+    "husky": "^1.3.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "lintspaces-cli": "^0.7.0",
+    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.11",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.68.1",
+    "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.0",
+    "sync-package-version": "^0.0.5"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 30,
+    "integrity": "sha512-xsQg7V/vcXCF7xzKMKZda0RgC4NpLfw3WYHpI0GOTdCcvDpoICj7NV5EJMCrTfv1tWluKUHJqEdbpltgscCKXQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcG5SfCRA9TVsSAnZWagAA3bAP/3ovrFdrAErU390Tyh0k\nMLNAj2V/S3ssfZt7aOLTym/jSeyQLmRKK+0wl5th5xM7xJKlrrMPtmeR5462\npVH4srbvZgEdAhd4SPlBAdfd66Qz/pq25wA98qRJOaAidkWWV/8ZXU0hj1zE\nrMKE4/Ck52nxmYfUPdfdyS6Stme/4xNtBO9hvq2EmBqwXP0GtAjq0EYJz1Tf\nFKP0HgY5GBRFneyaue80EF/VWCRuI+4ceMkTs7WOjBIFYQcnnvs1IBPnpnoQ\n70G88fErnMZnDbqw2XhTk28FdZHkqgBlIcuU5nLKYKd345qiGl4V5US3G8tB\nLp56Itf/rGpBRqgPf55fdwWouzNZ2f8xXRPlqYzEq/lvBwuAawPqcANNosdW\nUl8Wy5tL0n3sm83AQQjKCxpoYvh3UhxNQpQG41HKImIy0fXwp/7F/I5yiKbv\n5wUCjobmH9pMd40li6TwmaO4fBjBHrUc7yn3YlJqTJLYa+qGZfz8ZibJvOKE\nSQ9cT8x29VTj77E0HjRMznxPJMt9rkZ1jm+M/eCx9S7i4dXjtZEilDHMk5EW\nJmythpzKvcnpmGFDYWE9vtlWZF0J4Z4bTB5vd9yFKQj19tT9dTw0RezqaieG\njWVXb02jaWlJyRipH/EQIMoUHWf91ooc1qLAO4ILJEP1ikYfgzCbcknPuuuV\nCyVL\r\n=h9ld\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "595ffa359fa80eaf5298c41ecc16f2cbc3d5fd08",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-admob-free/-/cordova-plugin-admob-free-0.25.0.tgz",
+    "unpackedSize": 169533
+  },
+  "eslintConfig": {
+    "extends": [
+      "concise",
+      "concise-esnext",
+      "concise-jest"
+    ],
+    "rules": {
+      "class-methods-use-this": "off"
+    }
+  },
+  "gitHead": "52d5566d28abc9fb5f465c41ed7c9d59826b87ae",
+  "homepage": "https://ratson.github.io/cordova-plugin-admob-free/",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "roots": [
+      "<rootDir>/tests/js"
+    ]
+  },
+  "keywords": [
+    "admob",
+    "admobpro",
+    "cordova",
+    "cordova-admob",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-plugin-admob",
+    "ecosystem:cordova",
+    "google",
+    "plugin"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{java,js,html,h,m,md,xml}": [
+      "lintspaces -n -t -d spaces"
+    ]
+  },
+  "maintainers": [
+    {
+      "name": "ratson",
+      "email": "npm@ratson.name"
+    }
+  ],
+  "name": "cordova-plugin-admob-free",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ratson/cordova-plugin-admob-free.git"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rollup -c -o www/admob.js",
+    "clean": "rimraf *.log coverage dist www",
+    "docs": "run-s docs:*",
+    "docs-watch": "nodemon -w src --exec 'npm run docs'",
+    "docs:commit": "cd gh-pages && git add -A . && git commit -a -m 'Update page'",
+    "docs:esdoc": "esdoc -c esdoc.json",
+    "lint": "run-p lint:*",
+    "lint:js": "eslint --ext js,md .",
+    "lint:spaces": "lintspaces -n -t -d spaces *.* src/**/*.* tests/**/*.* examples/*/*.* examples/*/www/*.*",
+    "postpublish": "run-s docs",
+    "prepublish": "run-s clean build",
+    "pretest": "cross-env BABEL_ENV=test run-s build",
+    "test": "run-p test:* lint:*",
+    "test:ios": "cordova-testbed --platform ios --plugin .",
+    "test:js": "jest",
+    "version": "sync-package-version --cordova-plugin"
+  },
+  "tonicExampleFilename": "test.js",
+  "version": "0.25.0"
+}
