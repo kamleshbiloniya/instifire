@@ -19,6 +19,8 @@ export class HomePage {
   courses;
   yourclg = "iitk"
   course_key:{}
+  start_date= new Date()
+  time_date:number
   constructor(public navCtrl: NavController,
     // private admobFree:AdMobFree,
     private db:AngularFireDatabase,
@@ -48,21 +50,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    // this.navCtrl.push(RegisterPage);
-
-    // if(this.platform.is('cordova')){
-    //   const bannerConfig: AdMobFreeBannerConfig = {
-    //     id:'ca-app-pub-5072323905656927/1247306752',
-    //     isTesting: false,
-    //     autoShow: true
-    //   };
-    //   this.admobFree.banner.config(bannerConfig);
-      
-    //   this.admobFree.banner.prepare()
-    //     .then(() => {
-    //     })
-    //     .catch(e => console.log(e));
-    // }
   }
 
   changeNotification(item){

@@ -15,16 +15,7 @@
     <ion-item>
         <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input placeholder="Email address" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="confpassword"></ion-input>
-    </ion-item>
-    <ion-item class="item-leave-height">
+        <ion-item class="item-leave-height">
       <ion-label>Select University</ion-label>
       <ion-select [(ngModel)]="selectedclg">
           <ion-option value="IITK">IIT KANPUR</ion-option>
@@ -33,7 +24,17 @@
           <ion-option value="IITD">IIT DELHI</ion-option>
           <ion-option value="IITKGP">IIT KHARAGPUR</ion-option>
       </ion-select>
-  </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="user name" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="confpassword"></ion-input>
+    </ion-item>
   </ion-list>
   <button ion-button full (click)="register()">register</button><br>
   <button ion-button (click)="goToLogin()"> Back To Login</button>
