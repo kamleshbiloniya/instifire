@@ -38,6 +38,7 @@ export class CourseNotificationPage {
       console.log('payload',payload)
       db.list(payload).valueChanges().subscribe(data=>{
         console.log('data...........',data);
+        data.sort((a, b) => a['date'] <= b['date'] ? -1 : 1);
         for(let i = 1;i<data.length;i++){
           let p_data = JSON.stringify(data[i]);
           console.log('data...........',p_data);
@@ -52,6 +53,7 @@ export class CourseNotificationPage {
             }
           );
         }
+        // if (data.length < 2)
       });
       console.log(this.notifications);
       // .then(
