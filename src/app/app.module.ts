@@ -17,14 +17,18 @@ import { LoginPage } from '../pages/login/login';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalProvider } from '../providers/global/global';
-
+import { CourseNotificationPage } from '../pages/course-notification/course-notification'
+import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { ExpandableComponent } from '../components/expandable/expandable';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CourseNotificationPage,
+    ExpandableComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CourseNotificationPage
   ],
   providers: [
     StatusBar,
@@ -48,6 +53,7 @@ import { GlobalProvider } from '../providers/global/global';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // AdMobFree,
     GlobalProvider,
+    DatePicker
   ]
 })
 export class AppModule {}

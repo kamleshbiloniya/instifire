@@ -12,7 +12,7 @@
     <ion-item-group>
       <ion-grid style="border: 2px solid;" *ngFor="let item of course_key;let i = index;">
         <ion-row style="color:black;font-size:27px;">
-          <ion-col col-10>
+          <ion-col col-10 (click)='openNotification($event,item)'>
             {{item}}
           </ion-col>
           <ion-col col-2>

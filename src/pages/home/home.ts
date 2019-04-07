@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register';
 // import { AdMobFree, AdMobFreeBannerConfig} from '@ionic-native/admob-free/ngx';
 import { GlobalProvider } from '../../providers/global/global';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { CourseNotificationPage } from '../course-notification/course-notification';
 
 @Component({
   selector: 'page-home',
@@ -68,5 +69,13 @@ export class HomePage {
     })
     
   }
-  
+  openNotification(event,course_code){
+    this.navCtrl.push(
+      CourseNotificationPage,{
+        'course':course_code,
+        'user':this.email,
+        'college':this.yourclg
+      }
+    );
+  }
 }
