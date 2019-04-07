@@ -32,11 +32,19 @@ export class ListPage {
       do {
         this.i ++
       }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
-      this.course_key =  Object.keys(this.data[this.i]['courses'])
-      console.log("keys ->"+ this.course_key)
+      if(this.data[this.i]['courses'] != undefined){
+        this.course_key = []
+        this.course_key =  Object.keys(this.data[this.i]['courses'])
+        console.log("keys ->"+ this.course_key)
+      }
+      else{
+        this.course_key = []
+      }
+      
 
       this.user_no = this.i + 10001
     })
+    console.log("yo"+this.user_no)
     db.list('/college/'+this.clg_name).valueChanges().subscribe(data=>{
       this.data_clg = data
       this.items_all = Object.keys(this.data_clg[0])

@@ -4,7 +4,7 @@ import { RegisterPage } from '../register/register';
 // import { AdMobFree, AdMobFreeBannerConfig} from '@ionic-native/admob-free/ngx';
 import { GlobalProvider } from '../../providers/global/global';
 import { AngularFireDatabase } from 'angularfire2/database';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -25,6 +25,7 @@ export class HomePage {
     // private admobFree:AdMobFree,
     private db:AngularFireDatabase,
     public gvar:GlobalProvider,
+    private storage: Storage,
     private platform:Platform) {
     this.email = this.gvar.getcurrentstudent()
     this.email = "kamlesh@iitk.ac.in"
@@ -37,9 +38,16 @@ export class HomePage {
       }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
   
       this.name = data[this.i]['name']
-      this.courses = data[this.i]['courses']
-      this.course_key = Object.keys(this.courses)
-      console.log("your are " + this.course_key)
+      if(data[this.i]['courses'] != undefined){
+        this.courses = data[this.i]['courses']
+        this.course_key = []
+        this.course_key = Object.keys(this.courses)
+        console.log("your are " + this.course_key)
+      }
+      else{
+        this.course_key = []
+      }
+      
       this.user_no = this.i + 10001
     })
     db.list('/college/'+this.yourclg+'/courses').valueChanges().subscribe(data=>{
@@ -50,6 +58,22 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    // this.navCtrl.push(RegisterPage);
+
+    // if(this.platform.is('cordova')){
+    //   const bannerConfig: AdMobFreeBannerConfig = {
+    //     id:'ca-app-pub-5072323905656927/1247306752',
+    //     isTesting: false,
+    //     autoShow: true
+    //   };
+    //   this.admobFree.banner.config(bannerConfig);
+      
+    //   this.admobFree.banner.prepare()
+    //     .then(() => {
+    //     })
+    //     .catch(e => console.log(e));
+    // }
+
   }
 
   changeNotification(item){
