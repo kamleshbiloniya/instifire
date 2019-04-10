@@ -6,7 +6,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
-import { Firebase } from '@ionic-native/firebase';
+import { Firebase } from '@ionic-native/firebase/ngx';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterPage } from '../pages/register/register';
@@ -23,6 +24,7 @@ import { GlobalProvider } from '../providers/global/global';
 import { CourseNotificationPage } from '../pages/course-notification/course-notification'
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
+import { FcmProvider } from '../providers/fcm/fcm';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // AdMobFree,
     GlobalProvider,
-    DatePicker
+    DatePicker,
+    Firebase,
+    FcmProvider,
   ]
 })
 export class AppModule {}
