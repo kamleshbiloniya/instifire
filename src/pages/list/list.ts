@@ -1,5 +1,5 @@
 import { Component, ɵConsole } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController, Toast } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { firestore } from 'firebase';
@@ -14,8 +14,9 @@ export class ListPage {
   items_all :any[]
   email = "kamlesh@iitk.ac.in"
   emp = "ankitaks@iitk.ac.in"
-  clg_name = "iitk"
-  data:any[]
+  college = "iitk"
+  data:any
+  name:string
   data_clg :any[]
   obj = {}
   courses  = new Array()
@@ -30,33 +31,61 @@ export class ListPage {
      public navParams: NavParams) {
     this.selectedItem = navParams.get('item');
     // firestore.col
-    db.list('/users').valueChanges().subscribe(data=>{
-      // console.log('log_data:',data);
+    fireStore.doc('college/'+this.college).valueChanges().subscribe(data=>{
+      // console.clear()
+      console.log('data___:',data)
+      this.items = data['clist']
+    })
+    fireStore.collection('users').doc(this.email).valueChanges().subscribe(data=>{
       this.data = data
-      this.i = -1
-      do {
-        this.i ++
-      }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
-      this.course_key =  Object.keys(this.data[this.i]['courses'])
-      console.log("keys ->"+ this.course_key)
+      try{
 
-      this.user_no = this.i + 10001
-    })
-    db.list('/college/'+this.clg_name).valueChanges().subscribe(data=>{
-      this.data_clg = data
-      this.items_all = Object.keys(this.data_clg[0])
-      this.items = this.items_all
-      
-    })
-    db.list('/college/iitk/courses/CS101').valueChanges().subscribe(data =>{
-      // console.log('jsontoArray',data[1]);
-      console.log('data: ',data);
-      // console.log('By',(data[1]));
-      console.log('dataSize', data.length);
-      for(let i = 1;i < data.length;i++){
-        console.log('data['+i.toString()+']:',data[i]);
+        this.name = this.data['name']
+        this.courses = this.data['courses']
+        this.course_key = Object.keys(this.courses)
+        this.college = this.data['college']
+        console.log('=================')
+        console.log('data',this.data)
+        console.log('email ',this.email)
+        console.log('college',this.college)
+        console.log('subsribed courses ',this.course_key)
+        console.log('courses',this.courses)
+        console.log('=================')
+      }
+      catch(e){
+        this.toast.create({
+          message : e+"or\nCheck your network connectivity!",
+          duration:3000
+        }).present();
       }
     })
+    // db.list('/users').valueChanges().subscribe(data=>{
+    //   // console.log('log_data:',data);
+    //   this.data = data
+    //   this.i = -1
+    //   do {
+    //     this.i ++
+    //   }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
+    //   this.course_key =  Object.keys(this.data[this.i]['courses'])
+    //   console.log("keys ->"+ this.course_key)
+
+    //   this.user_no = this.i + 10001
+    // })
+    // db.list('/college/'+this.clg_name).valueChanges().subscribe(data=>{
+    //   this.data_clg = data
+    //   this.items_all = Object.keys(this.data_clg[0])
+    //   this.items = this.items_all
+      
+    // })
+    // db.list('/college/iitk/courses/CS101').valueChanges().subscribe(data =>{
+    //   // console.log('jsontoArray',data[1]);
+    //   console.log('data: ',data);
+    //   // console.log('By',(data[1]));
+    //   console.log('dataSize', data.length);
+    //   for(let i = 1;i < data.length;i++){
+    //     console.log('data['+i.toString()+']:',data[i]);
+    //   }
+    // })
   }
 
   getItems(ev) {
@@ -94,16 +123,16 @@ export class ListPage {
           text: 'save',
           handler: data => {
             console.log(data.code)
-            if (this.items_all.indexOf(data.code) < 0){
-              let newcrc = this.db.database.ref('/college/'+this.clg_name);
-              newcrc.child('/courses/'+data.code).update({by:this.email});
-            }
-            else{
-                this.toast.create({
-                  message :'This course already exist !!',
-                  duration:3000
-                }).present();
-            }
+            // if (this.items_all.indexOf(data.code) < 0){
+            //   let newcrc = this.db.database.ref('/college/'+this.clg_name);
+            //   newcrc.child('/courses/'+data.code).update({by:this.email});
+            // }
+            // else{
+            //     this.toast.create({
+            //       message :'This course already exist !!',
+            //       duration:3000
+            //     }).present();
+            // }
           }
         }
       ]
@@ -111,22 +140,33 @@ export class ListPage {
     alert.present();
   }
 
-  likeUnlike(item){
+  toggleLike(item){
     if (this.course_key.indexOf(item)>=0){
-      this.db.list('/users/user'+this.user_no+'/courses').remove(item).then(x =>{
+      delete this.data['courses'][item]
+      console.log(this.data)
+      this.fireStore.doc<any>('users/'+this.email).update({'courses':this.data['courses']}).then(x =>{
         this.toast.create({
-          message :'Course removed from your Home page',
+          message :'Course '+item +' removed from your home page',
+          duration:3000
+        }).present();
+      }).catch(e => {
+        this.toast.create({
+          message :"Couldn't remove the course from your home page\n"+e,
           duration:3000
         }).present();
       })
     }
     else{
-      // console.log('/users/user'+this.user_no+'/courses')
-      // this.db.list('/users/user'+this.user_no+'/courses/'+item+'/noti' ).push(true)
-      let newcrc = this.db.database.ref('/users/user'+this.user_no);
-      newcrc.child('/courses/'+item).update({noti:true}).then(x=>{
+      this.data['courses'][item]=true
+      console.log(this.data)
+      this.fireStore.doc<any>('users/'+this.email).update({'courses':this.data['courses']}).then(x =>{
         this.toast.create({
-          message :'Course added to your home page',
+          message :'Course '+ item +' added to your home page',
+          duration:3000
+        }).present();
+      }).catch(e => {
+        this.toast.create({
+          message :"Couldn't add the course to your home page\n"+e,
           duration:3000
         }).present();
       })
