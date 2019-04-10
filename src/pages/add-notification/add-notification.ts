@@ -96,7 +96,9 @@ export class AddNotificationPage {
       }
       else{
         let notification = []
-        let ref = this.fireStore.doc('/college/'+this.collegeId+'/courses/'+this.courseNo)
+        let payload = '/college/'+this.collegeId+'/courses/'+this.courseNo
+        console.log(payload)
+        let ref = this.fireStore.doc(payload)
         ref.valueChanges().subscribe(x=>{
           console.log('_++_+_+_+_',x)
           notification = x['notification']

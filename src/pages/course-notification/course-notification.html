@@ -14,15 +14,14 @@
 </ion-header>
 
 <ion-content padding>
-    
       <ion-list>
         <b *ngIf="emptyMsg">
           Nothing here!
         </b>
         <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of notifications">
-          <b>{{item['subject']}}</b>({{item['by']}})
+          <b>{{item['subject']}}</b>({{item['creator']}})
           <p>Start Date:<br *ngIf="item[expanded]">{{item['from']}}</p>
-          <expandable [expandHeight]="70" [expanded]="item['expanded']">
+          <expandable [expandHeight]="80" [expanded]="item['expanded']">
               End Date:<b>{{item['upto']}}</b><br>
               {{item['desc']}}
           </expandable>

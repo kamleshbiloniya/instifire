@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterPage } from '../pages/register/register';
@@ -15,6 +16,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LoginPage } from '../pages/login/login';
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalProvider } from '../providers/global/global';
@@ -22,7 +24,8 @@ import { CourseNotificationPage } from '../pages/course-notification/course-noti
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
 import { LogoutPage } from '../pages/logout/logout';
-import { AddNotificationPage } from '../pages/add-notification/add-notification';
+// import { AddNotificationPage } from '../pages/add-notification/add-notification';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -33,6 +36,7 @@ import { AddNotificationPage } from '../pages/add-notification/add-notification'
     LogoutPage,
     AddNotificationPage,
     CourseNotificationPage,
+    AddNotificationPage,
     ExpandableComponent
   ],
   imports: [
