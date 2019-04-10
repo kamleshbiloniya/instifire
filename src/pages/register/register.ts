@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFirestore } from 'angularfire2/firestore';
 // import { Firebase } from '@ionic-native/firebase/ngx';
 
 /**
@@ -25,6 +26,7 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController,
     private fbdb:AngularFireDatabase,
+    private afs : AngularFirestore,
     private afAuth:AngularFireAuth,
     private toast:ToastController,
     public navParams: NavParams) {
@@ -54,7 +56,7 @@ async register(){
     else{
       console.log(this.selectedclg + " "+this.name + " "+this.email + " "+this.password + " "+ this.confpassword)
       this.toast.create({
-        message:"All the filds are required",
+        message:"All  fields are required",
         duration:3000
       }).present();
     }

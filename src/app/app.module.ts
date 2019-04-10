@@ -11,27 +11,37 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterPage } from '../pages/register/register';
 import { FIREBASE_CONFIG } from './app.firebaseconfig';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LoginPage } from '../pages/login/login';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalProvider } from '../providers/global/global';
+<<<<<<< HEAD
 import { FcmProvider } from '../providers/fcm/fcm';
 
+=======
+import { CourseNotificationPage } from '../pages/course-notification/course-notification'
+import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { ExpandableComponent } from '../components/expandable/expandable';
+>>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CourseNotificationPage,
+    ExpandableComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     IonicStorageModule.forRoot(),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
   ],
@@ -41,7 +51,8 @@ import { FcmProvider } from '../providers/fcm/fcm';
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CourseNotificationPage
   ],
   providers: [
     StatusBar,
@@ -49,7 +60,11 @@ import { FcmProvider } from '../providers/fcm/fcm';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // AdMobFree,
     GlobalProvider,
+<<<<<<< HEAD
     FcmProvider,
+=======
+    DatePicker
+>>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
   ]
 })
 export class AppModule {}

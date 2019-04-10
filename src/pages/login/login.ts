@@ -65,7 +65,7 @@ export class LoginPage {
        
       } else {
         this.toast.create({
-          message : "Email is not verified. Please check inbox",
+          message : "Email is not verified. Please check your email:"+this.email,
           duration:3000
         }).present();
       }
@@ -103,12 +103,21 @@ export class LoginPage {
       {
         text: 'OK',
         handler: data => {
-          this.afAuth.auth.sendPasswordResetEmail(data.email).then(()=>{
+          if(data.email==null){
             this.toast.create({
-              message : "Mail has been sent. Please check inbox!",
+              message:'Email should not be empty!',
               duration:3000
-            }).present();
-          })
+            }).present()
+          }else
+          {
+            //TODO: check if the email is registered  then only send the forget link.
+            this.afAuth.auth.sendPasswordResetEmail(data.email).then(()=>{
+                this.toast.create({
+                  message : "Mail has been sent. Please check inbox!",
+                  duration:3000
+                }).present();
+              })
+          }
         }
       }
     ]

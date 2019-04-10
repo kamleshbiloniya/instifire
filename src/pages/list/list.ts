@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'page-list',
@@ -11,6 +13,7 @@ export class ListPage {
   items: any[];
   items_all :any[]
   email = "kamlesh@iitk.ac.in"
+  emp = "ankitaks@iitk.ac.in"
   clg_name = "iitk"
   data:any[]
   data_clg :any[]
@@ -21,12 +24,14 @@ export class ListPage {
   user_no:number
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
+    private fireStore: AngularFirestore,
     private db:AngularFireDatabase,
     private toast:ToastController,
      public navParams: NavParams) {
     this.selectedItem = navParams.get('item');
-
+    // firestore.col
     db.list('/users').valueChanges().subscribe(data=>{
+      // console.log('log_data:',data);
       this.data = data
       this.i = -1
       do {
@@ -49,9 +54,17 @@ export class ListPage {
       this.data_clg = data
       this.items_all = Object.keys(this.data_clg[0])
       this.items = this.items_all
-      // console.log()
+      
     })
-    
+    db.list('/college/iitk/courses/CS101').valueChanges().subscribe(data =>{
+      // console.log('jsontoArray',data[1]);
+      console.log('data: ',data);
+      // console.log('By',(data[1]));
+      console.log('dataSize', data.length);
+      for(let i = 1;i < data.length;i++){
+        console.log('data['+i.toString()+']:',data[i]);
+      }
+    })
   }
 
   getItems(ev) {

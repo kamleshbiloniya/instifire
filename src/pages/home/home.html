@@ -12,12 +12,12 @@
     <ion-item-group>
       <ion-grid style="border: 2px solid;" *ngFor="let item of course_key;let i = index;">
         <ion-row style="color:black;font-size:27px;">
-          <ion-col col-10>
+          <ion-col col-10 (click)='openNotification($event,item)'>
             {{item}}
           </ion-col>
           <ion-col col-2>
-            <ion-icon *ngIf="courses[item]['noti'] == false" (click)="changeNotification(item)" name="notifications-off" style="color:red"></ion-icon>
-            <ion-icon *ngIf="courses[item]['noti'] == true" (click)="changeNotification(item)" name="notifications" style="color:green"></ion-icon>
+            <ion-icon *ngIf="courses[item] == false" (click)="changeNotification(item)" name="notifications-off" style="color:red"></ion-icon>
+            <ion-icon *ngIf="courses[item] == true" (click)="changeNotification(item)" name="notifications" style="color:green"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid> 
