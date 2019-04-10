@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LoginPage } from '../pages/login/login';
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalProvider } from '../providers/global/global';
@@ -29,6 +30,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     LoginPage,
     RegisterPage,
     CourseNotificationPage,
+    AddNotificationPage,
     ExpandableComponent
   ],
   imports: [
@@ -47,6 +49,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     ListPage,
     LoginPage,
     RegisterPage,
+    AddNotificationPage,
     CourseNotificationPage
   ],
   providers: [

@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { CourseNotificationPage } from '../pages/course-notification/course-notification'
-
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 @Component({
   templateUrl: 'app.html'
 })

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireDatabase } from 'angularfire2/database'
 import { AngularFirestore } from 'angularfire2/firestore';
 import { empty } from 'rxjs';
+import { AddNotificationPage } from '../add-notification/add-notification';
 /**
  * Generated class for the CourseNotificationPage page.
  *
@@ -121,60 +122,11 @@ export class CourseNotificationPage {
     console.log('ionViewDidLoad CourseNotificationPage');
   }
   addNotification(){
-    let alert = this.alertCtrl.create({
-      title: 'Add New Notification',
-      inputs: [
-        {
-          type:'text',
-          name: 'subject',
-          placeholder: 'Title here',
-          
-        },
-        {
-         type : 'text',
-         name:'msg',
-         placeholder:'Detailed Description' 
-        },
-        {
-          type:'date',
-          name:'start_date',
-          placeholder:'Start Date here'
-        },
-        {
-          type:'date',
-          name:'end_date',
-          placeholder:'End Date(Deadline) Here'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'save',
-          handler: data => {
-            console.log(data)
-            //Validation here
-            let validated=true;
-            // if (this.items_all.indexOf(data.code) < 0){
-            //   let newcrc = this.db.database.ref('/college/'+this.clg_name);
-            //   newcrc.child('/courses/'+data.code).update({by:this.email});
-            // }
-            // else{
-            //     this.toast.create({
-            //       message :'This course already exist !!',
-            //       duration:3000
-            //     }).present();
-            // }
-          }
-        }
-      ]
-    });
-    alert.present();
+    this.navCtrl.push(AddNotificationPage,{
+      'course':this.courseNo,
+      'college':this.collegeId,
+      'user':this.userId
+    })
   }
   expandItem(item){
 
