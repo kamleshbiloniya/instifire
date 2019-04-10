@@ -22,6 +22,7 @@ import { CourseNotificationPage } from '../pages/course-notification/course-noti
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
 import { LogoutPage } from '../pages/logout/logout';
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,6 +31,7 @@ import { LogoutPage } from '../pages/logout/logout';
     LoginPage,
     RegisterPage,
     LogoutPage,
+    AddNotificationPage,
     CourseNotificationPage,
     ExpandableComponent
   ],
@@ -49,7 +51,8 @@ import { LogoutPage } from '../pages/logout/logout';
     ListPage,
     LoginPage,
     RegisterPage,
-    LogoutPage,
+    LogoutPage,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    AddNotificationPage,
     CourseNotificationPage
   ],
   providers: [

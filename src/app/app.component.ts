@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { CourseNotificationPage } from '../pages/course-notification/course-notification'
 import { LogoutPage } from '../pages/logout/logout';
+import { AddNotificationPage } from '../pages/add-notification/add-notification';
 
 @Component({
   templateUrl: 'app.html'
