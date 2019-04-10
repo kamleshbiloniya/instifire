@@ -71,11 +71,13 @@ export class CourseNotificationPage {
         for(let i = 0; i< this.notifications.length;i++){
           this.notifications[i]['expanded'] = false
           let tmp =''
-          let from = this.notifications[i]['from'].toDate()
+          let from = this.notifications[i]['from']
+          from = new Date(from);
           console.log('f---------',from)
           tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['from'] =from.toLocaleString()
-          from =  this.notifications[i]['upto'].toDate()
+          from =  this.notifications[i]['upto']
+          from = new Date(from);
           tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['upto'] =from.toLocaleString()
         }
@@ -92,30 +94,8 @@ export class CourseNotificationPage {
         'notification':[]
       })
       
-      // db.list(payload).valueChanges().subscribe(data=>{
-      //   console.log('data...........',data);
-      //   data.sort((a, b) => a['date'] <= b['date'] ? -1 : 1);
-      //   for(let i = 1;i<data.length;i++){
-      //     let p_data = JSON.stringify(data[i]);
-      //     console.log('data...........',p_data);
-      //     // data[i].expanded = false;
-      //     this.notifications.push(
-      //       {
-      //         'date':data[i]['date'],
-      //         'expr':data[i]['expr'],
-      //         'msg':data[i]['msg'],
-      //         'sub':data[i]['sub'],
-      //         expanded:false
-      //       }
-      //     );
-      //   }
-      //   // if (data.length < 2)
-      // });
       console.log(this.notifications);
-      // .then(
-      //     // date => console.log('Got date: ', date),
-      //     err => console.log('Error occurred while getting date: ', err)
-      //   );  
+       
   }
 
   ionViewDidLoad() {

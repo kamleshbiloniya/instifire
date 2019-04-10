@@ -2,7 +2,7 @@
   "cordova-plugin-firebase": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-firebase"
+      "id": "cordova-plugin-firebase@~2.0.5"
     },
     "is_top_level": true,
     "variables": {}
@@ -35,6 +35,14 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-fcm-with-dependecy-updated"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-fcm": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-fcm"
     },
     "is_top_level": true,
     "variables": {}

@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterPage } from '../pages/register/register';
@@ -22,6 +23,7 @@ import { GlobalProvider } from '../providers/global/global';
 import { CourseNotificationPage } from '../pages/course-notification/course-notification'
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
+
 @NgModule({
   declarations: [
     MyApp,
