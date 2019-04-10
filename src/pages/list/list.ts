@@ -35,6 +35,7 @@ export class ListPage {
       // console.clear()
       console.log('data___:',data)
       this.items = data['clist']
+      this.items_all = this.items
     })
     fireStore.collection('users').doc(this.email).valueChanges().subscribe(data=>{
       this.data = data
@@ -59,33 +60,6 @@ export class ListPage {
         }).present();
       }
     })
-    // db.list('/users').valueChanges().subscribe(data=>{
-    //   // console.log('log_data:',data);
-    //   this.data = data
-    //   this.i = -1
-    //   do {
-    //     this.i ++
-    //   }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
-    //   this.course_key =  Object.keys(this.data[this.i]['courses'])
-    //   console.log("keys ->"+ this.course_key)
-
-    //   this.user_no = this.i + 10001
-    // })
-    // db.list('/college/'+this.clg_name).valueChanges().subscribe(data=>{
-    //   this.data_clg = data
-    //   this.items_all = Object.keys(this.data_clg[0])
-    //   this.items = this.items_all
-      
-    // })
-    // db.list('/college/iitk/courses/CS101').valueChanges().subscribe(data =>{
-    //   // console.log('jsontoArray',data[1]);
-    //   console.log('data: ',data);
-    //   // console.log('By',(data[1]));
-    //   console.log('dataSize', data.length);
-    //   for(let i = 1;i < data.length;i++){
-    //     console.log('data['+i.toString()+']:',data[i]);
-    //   }
-    // })
   }
 
   getItems(ev) {
@@ -123,16 +97,20 @@ export class ListPage {
           text: 'save',
           handler: data => {
             console.log(data.code)
-            // if (this.items_all.indexOf(data.code) < 0){
-            //   let newcrc = this.db.database.ref('/college/'+this.clg_name);
-            //   newcrc.child('/courses/'+data.code).update({by:this.email});
-            // }
-            // else{
-            //     this.toast.create({
-            //       message :'This course already exist !!',
-            //       duration:3000
-            //     }).present();
-            // }
+            if (this.course_key.indexOf(data.code) < 0){
+              console.log("before items" + this.items)
+              this.items.push(data.code)
+              console.log("new items"+this.items)
+              this.fireStore.doc<any>('college/'+this.college).update({'clist':this.items})
+              // let courseCode = data.code
+              // this.fireStore.doc<any>('college/'+this.college+"/"+data.code+"/"+data.code).update({'creator':this.email})
+            }
+            else{
+                this.toast.create({
+                  message :'This course already exist !!',
+                  duration:3000
+                }).present();
+            }
           }
         }
       ]
