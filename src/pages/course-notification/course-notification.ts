@@ -65,18 +65,19 @@ export class CourseNotificationPage {
       let payload = '/college/'+this.collegeId+'/'+this.courseNo+'/'+this.courseNo;
       console.log('payload',payload)
       this.fireStore.doc(payload).valueChanges().subscribe(data=>{
-        this.creator = data['creator']
+        // this.creator = data['by']
+        console.log(data)
         console.log('data_c_n:',this.creator)
         Object.assign(this.notifications,data['notification'])
         this.notifications.sort((a, b) => a['from'] <= b['from'] ? -1 : 1);
         for(let i = 0; i< this.notifications.length;i++){
           this.notifications[i]['expanded'] = false
           let tmp =''
-          let from = this.notifications[i]['from'].toDate()
+          let from = new Date(this.notifications[i]['from'])
           console.log('f---------',from)
           tmp = this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['from'] =tmp
-          from =  this.notifications[i]['upto'].toDate()
+          from =  new Date(this.notifications[i]['upto'])
           tmp = this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['upto'] =tmp
         }
