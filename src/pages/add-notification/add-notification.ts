@@ -34,6 +34,7 @@ export class AddNotificationPage {
   format:any;
   notif
   flag = 1;
+  x = {}
   payload:string;
   constructor(public navCtrl: NavController,
      private fireStore:AngularFirestore,
@@ -113,27 +114,36 @@ export class AddNotificationPage {
         }).present();
         return
       }
-      else if (this.flag){
-        this.flag = 0
+      else{
         let notification = []
         let payload = '/college/'+this.collegeId+'/courses/'+this.courseNo
         console.log(payload)
         let ref = this.fireStore.doc(payload)
-        ref.valueChanges().subscribe(x=>{
-          console.log('_++_+_+_+_',x)
-          notification = x['notification']
-        })
-        let end_date= new Date(this.uptoD+"T"+this.uptoT)
-        notification.push({
-          'creator':this.userId,
-          'desc':this.desc,
-          'subject':this.subject,
-          'from' :( new Date()).getTime(),
-          'upto': end_date.getTime()
-        })
-        console.log('notifications',notification)
-        ref.update({'notification':notification}).catch(error =>{
-          console.log('unable to update:',error)
+        ref.valueChanges().subscribe(data=>{
+          this.x = data
+          console.log('_++_+_+_+_',this.x)
+          notification = this.x['notification']
+          let end_date= new Date(this.uptoD+"T"+this.uptoT)
+          if(this.flag){
+              this.flag = 0
+              notification.push({
+              'creator':this.userId,
+              'desc':this.desc,
+              'subject':this.subject,
+              'from' :( new Date()).getTime(),
+              'upto': end_date.getTime()
+              })
+            console.log('notifications ---> ' + notification)
+            ref.update({'notification':notification}).catch(error =>{
+              console.log('unable to update:',error)
+            }).then(x=>{
+              this.toast.create({
+                message :"New notification created !!",
+                duration:3000
+              }).present();
+              this.navCtrl.pop()
+            })
+          }
         })
       }
     })
