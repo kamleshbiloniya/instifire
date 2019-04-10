@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFirestore } from 'angularfire2/firestore';
 /**
  * Generated class for the CourseNotificationPage page.
  *
@@ -16,6 +17,7 @@ import { AngularFireDatabase } from 'angularfire2/database'
 // interface 
 export class CourseNotificationPage {
   collegeId : 'iitk';
+  creator:string;
   courseNo :any;
   userId:any;
   data:any[];
@@ -25,6 +27,7 @@ export class CourseNotificationPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private db:AngularFireDatabase,
+    private fireStore:AngularFirestore,
     private alertCtrl: AlertController
     ) {
       // this.collegeId = 'iitk'
@@ -34,27 +37,30 @@ export class CourseNotificationPage {
       this.courseNo = (navParams.get('course'));
       console.log('sdsd',navParams);
       console.log('sdsd',this.userId,this.collegeId,this.courseNo);
-      let payload = '/college/'+this.collegeId+'/courses/'+this.courseNo;
+      let payload = '/college/'+this.collegeId+'/'+this.courseNo+'/'+this.courseNo;
       console.log('payload',payload)
-      db.list(payload).valueChanges().subscribe(data=>{
-        console.log('data...........',data);
-        data.sort((a, b) => a['date'] <= b['date'] ? -1 : 1);
-        for(let i = 1;i<data.length;i++){
-          let p_data = JSON.stringify(data[i]);
-          console.log('data...........',p_data);
-          // data[i].expanded = false;
-          this.notifications.push(
-            {
-              'date':data[i]['date'],
-              'expr':data[i]['expr'],
-              'msg':data[i]['msg'],
-              'sub':data[i]['sub'],
-              expanded:false
-            }
-          );
-        }
-        // if (data.length < 2)
-      });
+      this.fireStore.doc(payload).valueChanges().subscribe(data=>{
+        console.log('data_c_n:',data)
+      })
+      // db.list(payload).valueChanges().subscribe(data=>{
+      //   console.log('data...........',data);
+      //   data.sort((a, b) => a['date'] <= b['date'] ? -1 : 1);
+      //   for(let i = 1;i<data.length;i++){
+      //     let p_data = JSON.stringify(data[i]);
+      //     console.log('data...........',p_data);
+      //     // data[i].expanded = false;
+      //     this.notifications.push(
+      //       {
+      //         'date':data[i]['date'],
+      //         'expr':data[i]['expr'],
+      //         'msg':data[i]['msg'],
+      //         'sub':data[i]['sub'],
+      //         expanded:false
+      //       }
+      //     );
+      //   }
+      //   // if (data.length < 2)
+      // });
       console.log(this.notifications);
       // .then(
       //     // date => console.log('Got date: ', date),
