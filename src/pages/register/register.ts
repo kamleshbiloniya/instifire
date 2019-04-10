@@ -36,8 +36,21 @@ export class RegisterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
+verify(){
+  let clg = this.email.split('@')[1].split('.')[0]
+  if(clg != this.selectedclg){
+    return false
+  }
+}
 async register(){
     if(this.selectedclg != null && this.name != null && this.email != null && this.password != null && this.confpassword != null){
+      if(!this.verify){
+        this.toast.create({
+          message : 'Please use you college email Id ',
+          duration:3000
+         }).present();
+        return;
+      }
       if(this.password == this.confpassword){
         const result = await this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(this.email,this.password);
         this.afAuth.auth.currentUser.sendEmailVerification().then(()=>{
