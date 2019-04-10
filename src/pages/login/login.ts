@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { HomePage } from '../home/home';
 import { GlobalProvider } from '../../providers/global/global';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LoginPage page.
  *
@@ -25,6 +25,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     private afAuth:AngularFireAuth,
     private toast:ToastController,
+    private storage: Storage,
     private db:AngularFireDatabase,
     private alertCtrl: AlertController,
     public gvar:GlobalProvider,
@@ -34,6 +35,20 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad HomePage');
+    this.storage.get('email').then((val) => {
+      console.log('Your email is', val);
+      this.email = val;
+    });
+    this.storage.get('passwd').then((val) => {
+      console.log('Your passwd is', val);
+      this.password = val;
+    });  
+    if( this.email && this.password){
+      this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password);
+      this.gvar.setcurrentstudent(this.email);
+      this.navCtrl.push(HomePage)
+    }
   }
 
   async login(){
@@ -43,6 +58,8 @@ export class LoginPage {
     try{
      const result = await this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password).then((user) => {
       if(user.user.emailVerified) {
+        this.storage.set('email', this.email);
+        this.storage.set('passwd',this.password);
         this.gvar.setcurrentstudent(this.email);
         this.navCtrl.push(HomePage)
        

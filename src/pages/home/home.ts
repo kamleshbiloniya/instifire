@@ -4,13 +4,14 @@ import { RegisterPage } from '../register/register';
 // import { AdMobFree, AdMobFreeBannerConfig} from '@ionic-native/admob-free/ngx';
 import { GlobalProvider } from '../../providers/global/global';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   email:string
+  password:string
   name:string
   data : any[];
   data_c : any[]
@@ -23,9 +24,9 @@ export class HomePage {
   time_date:number
   constructor(public navCtrl: NavController,
     // private admobFree:AdMobFree,
+    
     private db:AngularFireDatabase,
     public gvar:GlobalProvider,
-    private storage: Storage,
     private platform:Platform) {
     this.email = this.gvar.getcurrentstudent()
     this.email = "kamlesh@iitk.ac.in"
@@ -57,7 +58,6 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
     // this.navCtrl.push(RegisterPage);
 
     // if(this.platform.is('cordova')){
