@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Course Notification :  </ion-title>
+    <ion-title>{{courseNo}} by ({{creator}})  </ion-title>
     <ion-title center text-right>
         <ion-icon (click)="addNotification()"style="color:green" ios="ios-add-circle" md="md-add-circle"></ion-icon>
       </ion-title>
@@ -16,17 +16,17 @@
 <ion-content padding>
     
       <ion-list>
+        <b *ngIf="emptyMsg">
+          Nothing here!
+        </b>
         <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of notifications">
-          <ion-thumbnail item-start>
-            <img src="http://placehold.it/100">
-          </ion-thumbnail>
-          <h2>{{item['sub']}}</h2>
-          <p>Start Date:{{item['date']}}</p>
-          <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
-              End Date:{{item['expr']}}
-              Description:{{item['msg']}}
+          <b>{{item['subject']}}</b>({{item['by']}})
+          <p>Start Date:<br *ngIf="item[expanded]">{{item['from']}}</p>
+          <expandable [expandHeight]="70" [expanded]="item['expanded']">
+              End Date:<b>{{item['upto']}}</b><br>
+              {{item['desc']}}
           </expandable>
-          <button ion-button clear item-end>View</button>
+          <!-- <button ion-button clear item-end>View</button> -->
         </button>
       </ion-list>
 </ion-content>

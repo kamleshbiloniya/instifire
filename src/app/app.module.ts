@@ -18,14 +18,10 @@ import { LoginPage } from '../pages/login/login';
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalProvider } from '../providers/global/global';
-<<<<<<< HEAD
-import { FcmProvider } from '../providers/fcm/fcm';
-
-=======
 import { CourseNotificationPage } from '../pages/course-notification/course-notification'
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
->>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
+import { LogoutPage } from '../pages/logout/logout';
 @NgModule({
   declarations: [
     MyApp,
@@ -33,6 +29,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     ListPage,
     LoginPage,
     RegisterPage,
+    LogoutPage,
     CourseNotificationPage,
     ExpandableComponent
   ],
@@ -52,6 +49,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     ListPage,
     LoginPage,
     RegisterPage,
+    LogoutPage,
     CourseNotificationPage
   ],
   providers: [
@@ -60,11 +58,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // AdMobFree,
     GlobalProvider,
-<<<<<<< HEAD
-    FcmProvider,
-=======
     DatePicker
->>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
   ]
 })
 export class AppModule {}

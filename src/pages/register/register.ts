@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth'
 import { AngularFireDatabase } from 'angularfire2/database'
 import { AngularFirestore } from 'angularfire2/firestore';
+import { LoginPage } from '../login/login';
 // import { Firebase } from '@ionic-native/firebase/ngx';
 
 /**
@@ -44,6 +45,7 @@ async register(){
             message : 'Verification Link sent',
             duration:3000
            }).present();
+           this.navCtrl.setRoot(LoginPage)
           })  
       }
       else{

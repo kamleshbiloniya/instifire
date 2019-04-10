@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, ToastController} from 'ionic-angular';
+import { NavController, Platform, ToastController, LoadingController} from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 // import { AdMobFree, AdMobFreeBannerConfig} from '@ionic-native/admob-free/ngx';
 import { GlobalProvider } from '../../providers/global/global';
@@ -26,43 +26,15 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private toast:ToastController,
     // private admobFree:AdMobFree,
-<<<<<<< HEAD
-    
-    private db:AngularFireDatabase,
-=======
     private fireStore:AngularFirestore,
->>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
     public gvar:GlobalProvider,
+    public loadingCtrl: LoadingController,
     private platform:Platform) {
     this.email = this.gvar.getcurrentstudent()
     this.email = "kamlesh@iitk.ac.in"
     // let datax: any;
     fireStore.collection<any>('users').doc(this.email).valueChanges().subscribe(data =>{
       this.data = data
-<<<<<<< HEAD
-      // console.log(data)
-      this.i = -1
-      do {
-        this.i ++
-      }while (data[this.i]['email'] != this.email && data[this.i] != undefined)
-  
-      this.name = data[this.i]['name']
-      if(data[this.i]['courses'] != undefined){
-        this.courses = data[this.i]['courses']
-        this.course_key = []
-        this.course_key = Object.keys(this.courses)
-        console.log("your are " + this.course_key)
-      }
-      else{
-        this.course_key = []
-      }
-      
-      this.user_no = this.i + 10001
-    })
-    db.list('/college/'+this.yourclg+'/courses').valueChanges().subscribe(data=>{
-      this.data_c = data
-      //console.log(this.data_c)
-=======
       try{
         this.name = this.data['name']
         this.courses = this.data['courses']
@@ -79,7 +51,6 @@ export class HomePage {
           duration:3000
         }).present();
       }
->>>>>>> 39ca733c7e5bea8dad4809cfa89364089213bb3d
     })
   }
 
@@ -118,5 +89,19 @@ export class HomePage {
         'college':this.college
       }
     );
+  }
+
+  refresh(){
+    console.log("refreshing...");
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
   }
 }

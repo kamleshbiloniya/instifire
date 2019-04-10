@@ -29,7 +29,6 @@ export class LoginPage {
     private db:AngularFireDatabase,
     private alertCtrl: AlertController,
     public gvar:GlobalProvider,
-    // private storage: Storage,
     public navParams: NavParams) {
   }
 
@@ -37,17 +36,22 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
     console.log('ionViewDidLoad HomePage');
     this.storage.get('email').then((val) => {
-      console.log('Your email is', val);
       this.email = val;
+      console.log('Your email is', this.email);
     });
     this.storage.get('passwd').then((val) => {
-      console.log('Your passwd is', val);
       this.password = val;
+      console.log('Your passwd is', this.password);
     });  
-    if( this.email && this.password){
+    if(this.email && this.password){
+      console.log(this.email + "<<-->> "+ this.password)
       this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password);
       this.gvar.setcurrentstudent(this.email);
-      this.navCtrl.push(HomePage)
+      this.navCtrl.setRoot(HomePage)
+      this.toast.create({
+        message : "You are already logged in.. go to side tab for log out",
+        duration:3000
+      }).present();
     }
   }
 
@@ -61,11 +65,11 @@ export class LoginPage {
         this.storage.set('email', this.email);
         this.storage.set('passwd',this.password);
         this.gvar.setcurrentstudent(this.email);
-        this.navCtrl.push(HomePage)
+        this.navCtrl.setRoot(HomePage)
        
       } else {
         this.toast.create({
-          message : "Email is not verified. Please check your email:"+this.email,
+          message : "Email is not verified. Please check your inbox:"+this.email,
           duration:3000
         }).present();
       }
