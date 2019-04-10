@@ -31,10 +31,28 @@ export class AddNotificationPage {
   today_date:string
   today_time:string 
   data:any;
+  format:any;
+  notif
+  flag = 1;
+  payload:string;
   constructor(public navCtrl: NavController,
-    private fireStore:AngularFirestore,
-    private toast:ToastController,
-    public navParams: NavParams) {
+     private fireStore:AngularFirestore,
+     public toast:ToastController,
+     public navParams: NavParams) {
+    this.userId = (navParams.get('user'));
+    this.collegeId = (navParams.get('college'));
+    this.courseNo = (navParams.get('course'));
+    // this.notif = (navParams.get('notification'))
+    // if (typeof (this.notif) == 'undefined'){
+    //   this.notif = new Array()
+    // }
+    this.payload = '/college/'+this.collegeId+'/courses/'+this.courseNo
+    console.log('userId:',this.userId)
+    console.log('college: ',this.collegeId)
+    console.log('course: ',this.courseNo)
+    // console.log('notif ',this.notif)
+    this.flag = 1;
+    // this.format = new SimpleDateFormat("yyyy-MM-dd");
   }
 
   ionViewDidLoad() {
@@ -75,6 +93,7 @@ export class AddNotificationPage {
     
   }
  addNewNotification(){
+   this.flag = 1
     console.log('subject: ',this.subject);
     console.log('desc: ',this.desc);
     console.log('date:',this.uptoD);
@@ -94,7 +113,8 @@ export class AddNotificationPage {
         }).present();
         return
       }
-      else{
+      else if (this.flag){
+        this.flag = 0
         let notification = []
         let payload = '/college/'+this.collegeId+'/courses/'+this.courseNo
         console.log(payload)
@@ -117,6 +137,30 @@ export class AddNotificationPage {
         })
       }
     })
+    // this.notif.push({
+    //   'creator':this.userId,
+    //   'desc':this.desc,
+    //   'subject':this.subject,
+    //   'from' :( new Date()).getTime(),
+    //   'upto': end_date.getTime()
+    // })
+    // console.log('notifications',this.notif)
+    // if (this.flag && !( this.notif == [] || this.notif=='undefined')){
+    //   this.flag = 0;
+
+    //   this.fireStore.doc('/college/'+this.collegeId+'/courses/'+this.courseNo).update({'notification':this.notif}).then(x =>{
+    //     this.toast.create({
+    //       message :'Notification added to your home page',
+    //       duration:3000
+    //     }).present();
+    //     this.navCtrl.pop()
+    //   }).catch(e => {
+    //     this.toast.create({
+    //       message :"Couldn't add the notification to your home page\n"+e,
+    //       duration:3000
+    //     }).present();
+    //   })
+    // }
   }
 
 }

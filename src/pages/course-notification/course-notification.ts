@@ -18,7 +18,7 @@ import { AddNotificationPage } from '../add-notification/add-notification';
 })
 // interface 
 export class CourseNotificationPage {
-  collegeId : 'iitk';
+  collegeId ;
   creator:string;
   courseNo :any;
   userId:any;
@@ -73,28 +73,21 @@ export class CourseNotificationPage {
           let tmp =''
           let from = this.notifications[i]['from']
           from = new Date(from);
-          console.log('f---------',from)
           tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['from'] =from.toLocaleString()
           from =  this.notifications[i]['upto']
           from = new Date(from);
           tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['upto'] =from.toLocaleString()
-        }
+          console.log('n_-=-=-=-=-=-=-',this.notifications);
+          
+        }     
         if (this.notifications.length == 0){
           this.emptyMsg =true;
         }else{
           this.emptyMsg = false;
-        }
-        // console.log(this.notifications.length)
-
-      })
-      this.fireStore.collection('college/'+this.collegeId+'/courses/').doc('MSO202').set({
-        'by':'amit@iitk.ac.in',
-        'notification':[]
-      })
-      
-      console.log(this.notifications);
+        }   
+      })    
        
   }
 
@@ -105,7 +98,8 @@ export class CourseNotificationPage {
     this.navCtrl.push(AddNotificationPage,{
       'course':this.courseNo,
       'college':this.collegeId,
-      'user':this.userId
+      'user':this.userId,
+      'notifications':this.notifications
     })
   }
   expandItem(item){

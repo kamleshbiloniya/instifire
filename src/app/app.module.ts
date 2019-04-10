@@ -6,7 +6,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
-import { Firebase } from '@ionic-native/firebase';
+import { Firebase } from '@ionic-native/firebase/ngx';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterPage } from '../pages/register/register';
@@ -25,6 +26,7 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ExpandableComponent } from '../components/expandable/expandable';
 import { LogoutPage } from '../pages/logout/logout';
 // import { AddNotificationPage } from '../pages/add-notification/add-notification';
+import { FcmProvider } from '../providers/fcm/fcm';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { LogoutPage } from '../pages/logout/logout';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // AdMobFree,
     GlobalProvider,
-    DatePicker
+    DatePicker,
+    Firebase,
+    FcmProvider,
   ]
 })
 export class AppModule {}
