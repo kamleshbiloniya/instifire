@@ -14,12 +14,3 @@ export const FIREBASE_CONFIG = {
     storageBucket: "instantifire.appspot.com",
     messagingSenderId: "705136785052"
 }
-// export const snapShotToArray = snapshot =>{
-//     let rt = [];
-//     snapshot.array.forEach(element => {
-//         let item = element.val();
-//         item.key  = element.key;
-//         rt.push(item);
-//     });
-//     return rt;
-// }

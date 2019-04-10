@@ -59,13 +59,12 @@ export class CourseNotificationPage {
       this.userId = (navParams.get('user'));
       this.collegeId = (navParams.get('college'));
       this.courseNo = (navParams.get('course'));
-      console.log('sdsd',navParams);
       console.log('sdsd',this.userId,this.collegeId,this.courseNo);
-      let payload = '/college/'+this.collegeId+'/'+this.courseNo+'/'+this.courseNo;
+      let payload = '/college/'+this.collegeId+'/courses/'+this.courseNo;
       console.log('payload',payload)
       this.fireStore.doc(payload).valueChanges().subscribe(data=>{
-        this.creator = data['creator']
-        console.log('data_c_n:',this.creator)
+        this.creator = data['by']
+        console.log('data_c_n:',data)
         Object.assign(this.notifications,data['notification'])
         this.notifications.sort((a, b) => a['from'] <= b['from'] ? -1 : 1);
         for(let i = 0; i< this.notifications.length;i++){
@@ -73,11 +72,11 @@ export class CourseNotificationPage {
           let tmp =''
           let from = this.notifications[i]['from'].toDate()
           console.log('f---------',from)
-          tmp = this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
-          this.notifications[i]['from'] =tmp
+          tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
+          this.notifications[i]['from'] =from.toLocaleString()
           from =  this.notifications[i]['upto'].toDate()
-          tmp = this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
-          this.notifications[i]['upto'] =tmp
+          tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
+          this.notifications[i]['upto'] =from.toLocaleString()
         }
         if (this.notifications.length == 0){
           this.emptyMsg =true;
@@ -87,6 +86,11 @@ export class CourseNotificationPage {
         // console.log(this.notifications.length)
 
       })
+      this.fireStore.collection('college/'+this.collegeId+'/courses/').doc('MSO202').set({
+        'by':'amit@iitk.ac.in',
+        'notification':[]
+      })
+      
       // db.list(payload).valueChanges().subscribe(data=>{
       //   console.log('data...........',data);
       //   data.sort((a, b) => a['date'] <= b['date'] ? -1 : 1);
