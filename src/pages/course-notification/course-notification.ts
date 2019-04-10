@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { empty } from 'rxjs';
 import { AddNotificationPage } from '../add-notification/add-notification';
@@ -10,7 +10,6 @@ import { AddNotificationPage } from '../add-notification/add-notification';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-course-notification',
@@ -79,9 +78,9 @@ export class CourseNotificationPage {
           from = new Date(from);
           tmp = "\t"+this.weekday[from.getDay()]+'\t'+from.getDate()+'\t'+this.month[from.getMonth()]+'\t'+from.getFullYear()
           this.notifications[i]['upto'] =from.toLocaleString()
-          console.log('n_-=-=-=-=-=-=-',this.notifications);
           
         }     
+        console.log('-=-=-=-=-=-=-',this.notifications);
         if (this.notifications.length == 0){
           this.emptyMsg =true;
         }else{

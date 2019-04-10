@@ -31,6 +31,10 @@ export class HomePage {
     this.email = this.gvar.getcurrentstudent()
     this.email = "kamlesh@iitk.ac.in"
     // let datax: any;
+    // fireStore.doc('college/iitk/courses/MSO201/').set({
+    //   'by':'ankitaks@iitk.ac.in',
+    //   'notification':[]
+    // })
     fireStore.collection<any>('users').doc(this.email).valueChanges().subscribe(data =>{
       this.data = data
       try{
